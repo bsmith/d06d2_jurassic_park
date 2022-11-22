@@ -32,13 +32,13 @@ describe('Park', function() {
         assert.deepStrictEqual(actual, []);
     });
 
-    it.skip('should be able to add a dinosaur to its collection', function () {
+    it('should be able to add a dinosaur to its collection', function () {
         park.addDinosaur(dinosaurs[0]);
         const actual = park.dinosaurs;
         assert.deepStrictEqual(actual, [dinosaurs[0]]);
     });
     
-    it.skip('should be able to remove a dinosaur from its collection', function () {
+    it('should be able to remove a dinosaur from its collection', function () {
         for (let dinosaur of dinosaurs) {
             park.addDinosaur(dinosaur);
         }
@@ -47,23 +47,23 @@ describe('Park', function() {
         assert.deepStrictEqual(actual, [dinosaurs[0], dinosaurs[2], dinosaurs[3], dinosaurs[4]]);
     });
     
-    it.skip('should be able to find the dinosaur that attracts the most visitors', function () {
+    it('should be able to find the dinosaur that attracts the most visitors', function () {
         for (let dinosaur of dinosaurs) {
             park.addDinosaur(dinosaur);
         }
-        const actual = park.findMostAttractiveAnimal();
+        const actual = park.findMostAttractiveDinosaur();
         assert.strictEqual(actual, dinosaurs[0]);
     });
     
-    it.skip('should be able to find all dinosaurs of a particular species', function () {
+    it('should be able to find all dinosaurs of a particular species', function () {
         for (let dinosaur of dinosaurs) {
             park.addDinosaur(dinosaur);
         }
-        const actual = park.findAnimalBySpecies('Mimeosaur');
-        assert.deepStrictEqual(actual, dinosaurs[1], dinosaurs[4]);
+        const actual = park.findDinosaursBySpecies('Mimeosaur');
+        assert.deepStrictEqual(actual, [dinosaurs[1], dinosaurs[4]]);
     });
     
-    it.skip('should be able to calculate the total number of visitors per day', function () {
+    it('should be able to calculate the total number of visitors per day', function () {
         for (let dinosaur of dinosaurs) {
             park.addDinosaur(dinosaur);
         }
@@ -71,7 +71,7 @@ describe('Park', function() {
         assert.strictEqual(actual, 690);
     });
     
-    it.skip('should be able to calculate the total number of visitors per year', function () {
+    it('should be able to calculate the total number of visitors per year', function () {
         for (let dinosaur of dinosaurs) {
             park.addDinosaur(dinosaur);
         }
@@ -79,7 +79,7 @@ describe('Park', function() {
         assert.strictEqual(actual, 252022.5)
     });
     
-    it.skip('should be able to calculate total revenue for one year', function () {
+    it('should be able to calculate total revenue for one year', function () {
         for (let dinosaur of dinosaurs) {
             park.addDinosaur(dinosaur);
         }
