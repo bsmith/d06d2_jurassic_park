@@ -53,17 +53,20 @@ Park.prototype.totalRevenuePerYear = function () {
 };
 
 Park.prototype.removeDinosaursBySpecies = function (species) {
-    for (let i = 0; i < this.dinosaurs.length; i++) {
-        while (i < this.dinosaurs.length && this.dinosaurs[i].species === species)
+    for (let i = 0; i < this.dinosaurs.length;) {
+        if (this.dinosaurs[i].species === species)
             this.dinosaurs.splice(i, 1);
+        else
+            i++;
     }
 };
 
 Park.prototype.countDinosaursByDiet = function () {
     const byDiet = {};
     for (const dinosaur of this.dinosaurs) {
-        if (!byDiet[dinosaur.diet])
-            byDiet[dinosaur.diet] = 0;
+        // if (!byDiet[dinosaur.diet])
+        //     byDiet[dinosaur.diet] = 0;
+        byDiet[dinosaur.diet] ||= 0;
         byDiet[dinosaur.diet]++;
     }
     return byDiet;
