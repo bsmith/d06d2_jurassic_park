@@ -86,4 +86,25 @@ describe('Park', function() {
         const actual = park.totalRevenuePerYear();
         assert.strictEqual(actual, 63005625);
     });
+
+    it('should be able to remove all dinosaurs of a particular species', function () {
+        for (let dinosaur of dinosaurs) {
+            park.addDinosaur(dinosaur);
+        };
+        park.removeDinosaursBySpecies('Mimeosaur');
+        const actual = park.dinosaurs;
+        assert.deepStrictEqual(actual, [dinosaurs[0], dinosaurs[2], dinosaurs[3]]);
+    });
+
+    it('should be able to count dinosaurs by diet', function () {
+        for (let dinosaur of dinosaurs) {
+            park.addDinosaur(dinosaur);
+        };
+        const actual = park.countDinosaursByDiet();
+        assert.deepStrictEqual(actual, {
+            carnivore: 1,
+            herbivore: 3,
+            omnivore: 1
+        })
+    });
 });

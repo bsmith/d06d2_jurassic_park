@@ -28,8 +28,8 @@ Park.prototype.findMostAttractiveDinosaur = function () {
 };
 
 Park.prototype.findDinosaursBySpecies = function (species) {
-    let foundDinosaurs = [];
-    for (let dinosaur of this.dinosaurs) {
+    const foundDinosaurs = [];
+    for (const dinosaur of this.dinosaurs) {
         if (dinosaur.species === species)
             foundDinosaurs.push(dinosaur);
     }
@@ -38,7 +38,7 @@ Park.prototype.findDinosaursBySpecies = function (species) {
 
 Park.prototype.totalVisitorsPerDay = function () {
     let totalVisitorsPerDay = 0;
-    for (let dinosaur of this.dinosaurs) {
+    for (const dinosaur of this.dinosaurs) {
         totalVisitorsPerDay += dinosaur.guestsAttractedPerDay;
     }
     return totalVisitorsPerDay;
@@ -51,5 +51,22 @@ Park.prototype.totalVisitorsPerYear = function () {
 Park.prototype.totalRevenuePerYear = function () {
     return this.totalVisitorsPerYear() * this.ticketPrice;
 };
+
+Park.prototype.removeDinosaursBySpecies = function (species) {
+    for (let i = 0; i < this.dinosaurs.length; i++) {
+        while (i < this.dinosaurs.length && this.dinosaurs[i].species === species)
+            this.dinosaurs.splice(i, 1);
+    }
+};
+
+Park.prototype.countDinosaursByDiet = function () {
+    const byDiet = {};
+    for (const dinosaur of this.dinosaurs) {
+        if (!byDiet[dinosaur.diet])
+            byDiet[dinosaur.diet] = 0;
+        byDiet[dinosaur.diet]++;
+    }
+    return byDiet;
+}
 
 module.exports = Park;
